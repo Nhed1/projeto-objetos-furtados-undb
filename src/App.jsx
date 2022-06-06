@@ -10,13 +10,13 @@ function App() {
     if (value != "") {
       api.get(`/cpf_request/${value}`).then((response) => {
         console.log(response);
-        response.status === 200 ? navigate("/user") : alert("erro");
+        response.status === 200
+          ? navigate(`/user/${response.data.cpf_request._id}`)
+          : alert("erro");
       });
     } else {
       alert("digite o codigo de rastreio");
     }
-
-    // navigate("/user");
   }
   return (
     <div>
