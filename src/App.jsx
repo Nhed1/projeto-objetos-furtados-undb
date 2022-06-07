@@ -6,10 +6,9 @@ function App() {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
-  async function handleValue(value) {
+  function handleValue(value) {
     if (value != "") {
       api.get(`/cpf_request/${value}`).then((response) => {
-        console.log(response);
         response.status === 200
           ? navigate(`/user/${response.data.cpf_request._id}`)
           : alert("erro");
@@ -17,6 +16,7 @@ function App() {
     } else {
       alert("digite o codigo de rastreio");
     }
+    
   }
   return (
     <div>
