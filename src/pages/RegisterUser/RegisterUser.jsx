@@ -31,9 +31,16 @@ export default function RegisterUser() {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <Flex>
+    <Flex h="100vh" w="90vw">
       <Sidebar setActiveNav={setActiveNav} />
-      <Flex ml="200px">
+      <Flex
+        h="100%"
+        ml="100px"
+        w="100%"
+        mt="50px"
+        justifyContent="center"
+        alignItems="flex-start"
+      >
         <GetNav />
       </Flex>
     </Flex>
