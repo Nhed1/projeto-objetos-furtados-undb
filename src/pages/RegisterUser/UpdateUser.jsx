@@ -6,7 +6,7 @@ import ButtonSubmit from "../../components/ButtonSubmit";
 export default function UpdateUser() {
   const [dados, setDados] = useState({
     localizacao: "",
-    status: "não encontrado",
+    status: "Encontrado",
   });
   const [id, setId] = useState("");
 

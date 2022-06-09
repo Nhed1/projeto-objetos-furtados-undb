@@ -17,17 +17,16 @@ export default function ShowUsers() {
 
   if (loading) {
     return "loading";
-  } else {
-    console.log(data);
   }
 
   return (
-    <Grid templateColumns="repeat(4, 1fr)" gap={10}>
-      {!loading &&
-        data?.map((user) => {
-          return <Card user={user}></Card>;
-        })}
-    </Grid>
+    <Flex flexDir="column">
+      <Grid templateColumns="repeat(4, 1fr)" gap={10}>
+        {!loading &&
+          data?.map((user) => {
+            return <Card user={user}></Card>;
+          })}
+      </Grid>
+    </Flex>
   );
 }
-// data?.data["Itens Recuperados"].map((user) => {

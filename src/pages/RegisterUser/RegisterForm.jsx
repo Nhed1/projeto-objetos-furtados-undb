@@ -18,7 +18,7 @@ export default function RegisterForm() {
     id_item: "",
     nome_item: "",
     localizacao: "",
-    status: "não encontrado",
+    status: "Não Encontrado",
   });
 
   const baseUrl = "http://127.0.0.1:8000/consulta/v1/item_request/";

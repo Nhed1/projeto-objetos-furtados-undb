@@ -17,9 +17,35 @@ export default function UserSearchItem() {
   return (
     <Flex justifyContent="center" alignItems="center" h="100vh" w="100vw">
       <Flex flexDir="column" fontSize="2xl">
-        <Text>Nome: {data?.nome}</Text>
-        <Text>Objeto furtado: {data?.nome_item}</Text>
-        <Text>Status: {data?.status}</Text>
+        <Text mb="10px" fontWeight="bold" textAlign="center">
+          Informações
+        </Text>
+        <Flex>
+          <Text fontWeight="bold" mr="6px">
+            Nome:{" "}
+          </Text>
+          <Text> {data?.nome}</Text>
+        </Flex>
+        <Flex>
+          <Text fontWeight="bold" mr="6px">
+            Objeto furtado:{" "}
+          </Text>
+          <Text>{data?.nome_item}</Text>
+        </Flex>
+        <Flex>
+          <Text fontWeight="bold" mr="6px">
+            Status:
+          </Text>
+          <Text>{data?.status}</Text>
+        </Flex>
+        {!data?.localizacao == "" && (
+          <Flex>
+            <Text fontWeight="bold" mr="6px">
+              Localização:
+            </Text>
+            <Text>{data?.localizacao}</Text>
+          </Flex>
+        )}
       </Flex>
     </Flex>
   );
