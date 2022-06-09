@@ -18,7 +18,7 @@ export default function RegisterForm() {
     id_item: "",
     nome_item: "",
     localizacao: "",
-    status: "",
+    status: "não encontrado",
   });
 
   const baseUrl = "http://127.0.0.1:8000/consulta/v1/cpf_request/";
@@ -52,7 +52,7 @@ export default function RegisterForm() {
         </Flex>
 
         <Flex flexDir="column">
-          <FormLabel htmlFor="id_item">Id do item</FormLabel>
+          <FormLabel htmlFor="id_item">Identificador do item </FormLabel>
           <Input
             id="id_item"
             type="number"
