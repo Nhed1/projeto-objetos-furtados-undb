@@ -1,18 +1,19 @@
 import json
 from starlette.requests import Request
 from starlette.responses import JSONResponse
-from models.cpf_request import CpfRequest
-from services.cpf_request import CpfRequestService
+from models.item_request import ItemRequest
+from models.item_request import AtualizarItem
+from services.item_request import ItemRequestService
 
-class CpfRequestAction:
+class ItemRequestAction:
     @staticmethod
-    async def insert_cpf_request(request: Request) -> JSONResponse:
+    async def insert_item_request(request: Request) -> JSONResponse:
         try:
             body_payload = await request.json()
 
-            new_id = CpfRequestService.insert_cpf_request(CpfRequest(**body_payload))
+            new_id = ItemRequestService.insert_item_request(ItemRequest(**body_payload))
 
-            return JSONResponse({"cpf_request_id": new_id})
+            return JSONResponse({"item_request_id": new_id})
         except Exception as E:
             return JSONResponse(
                 {"Error": E},
@@ -23,19 +24,20 @@ class CpfRequestAction:
     async def update_item_request(request: Request) -> JSONResponse:
         try:
             id = request.path_params['id']
-            item_update = CpfRequestService.update_item_request(id)
+            body_payload = await request.json()
+            item_update = ItemRequestService.update_item_request(id,AtualizarItem(**body_payload))
             return JSONResponse({"Item_update": item_update})
         except Exception as E:
             return JSONResponse(
                 {"Error": E},
                 status_code=400
-            )    
+            )
 
     @staticmethod
-    async def get_all_cpf_requests(request: Request) -> JSONResponse:
+    async def get_all_item_requests(request: Request) -> JSONResponse:
         try:
-            cpf_request = CpfRequestService.get_all_cpf_requests()
-            return JSONResponse({"Itens Recuperados": cpf_request})
+            item_request = ItemRequestService.get_all_item_requests()
+            return JSONResponse({"Itens Recuperados": item_request})
         except Exception as E:
             return JSONResponse(
                 {"Error": E},
@@ -43,22 +45,22 @@ class CpfRequestAction:
             )       
 
     @staticmethod
-    async def get_cpf_request(request: Request) -> JSONResponse:
+    async def get_item_request(request: Request) -> JSONResponse:
         try:
             id = request.path_params['id']
-            cpf_request = CpfRequestService.get_cpf_request(id)
-            return JSONResponse({"cpf_request": cpf_request})
+            item_request = ItemRequestService.get_item_request(id)
+            return JSONResponse({"Item Request": item_request})
         except Exception as E:
             return JSONResponse(
                 {"Error": E},
                 status_code=400
-            )    
+            )
 
     @staticmethod
-    async def delete_cpf_request(request: Request) -> JSONResponse:
+    async def delete_item_request(request: Request) -> JSONResponse:
         try:
             id = request.path_params['id']
-            deleted = CpfRequestService.delete_cpf_request(id)
+            deleted = ItemRequestService.delete_item_request(id)
             return JSONResponse({"Item":"Excluído do Banco" if deleted else "Item inválido"})
         except Exception as E:
             return JSONResponse(

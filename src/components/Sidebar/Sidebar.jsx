@@ -6,6 +6,7 @@ import { GoPlusSmall } from "react-icons/go";
 import { AiFillDelete } from "react-icons/ai";
 import { MdBallot } from "react-icons/md";
 import { BiArrowBack } from "react-icons/bi";
+import { GrUpdate } from "react-icons/gr";
 import NavItem from "./NavItem";
 
 import { Link } from "react-router-dom";
@@ -60,6 +61,13 @@ export default function Sidebar({ setActiveNav }) {
           title="Mostrar todos"
           setActiveNav={setActiveNav}
           activeNav="all"
+        />
+        <NavItem
+          navSize={navSize}
+          icon={GrUpdate}
+          title="Atualizar registro"
+          setActiveNav={setActiveNav}
+          activeNav="update"
         />
       </Flex>
       <Flex

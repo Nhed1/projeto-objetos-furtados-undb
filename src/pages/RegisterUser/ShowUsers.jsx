@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
 
 export default function ShowUsers() {
-  const baseUrl = "http://127.0.0.1:8000/consulta/v1/cpf_request/";
+  const baseUrl = "http://127.0.0.1:8000/consulta/v1/item_request/";
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 

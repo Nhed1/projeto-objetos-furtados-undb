@@ -4,7 +4,7 @@ import { useState } from "react";
 import ButtonSubmit from "../../components/ButtonSubmit";
 
 export default function DeleteUserForm() {
-  const baseUrl = "http://127.0.0.1:8000/consulta/v1/cpf_request/";
+  const baseUrl = "http://127.0.0.1:8000/consulta/v1/item_request/";
 
   const handleSubmit = (e) => {
     e.preventDefault();

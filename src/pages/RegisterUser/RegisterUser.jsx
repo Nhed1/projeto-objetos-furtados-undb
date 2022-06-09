@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import RegisterForm from "./RegisterForm";
 import DeleteUserForm from "./DeleteUserForm";
 import ShowUsers from "./ShowUsers";
+import UpdateUser from "./UpdateUser";
 
 export default function RegisterUser() {
   const [activeNav, setActiveNav] = useState("register");
@@ -19,6 +20,9 @@ export default function RegisterUser() {
     }
     if (activeNav == "all") {
       return <ShowUsers />;
+    }
+    if (activeNav == "update") {
+      return <UpdateUser />;
     }
   }
 
