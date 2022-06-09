@@ -6,52 +6,60 @@ import {
   Flex,
   Button,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { api } from "../../api";
 import ButtonSubmit from "../../components/ButtonSubmit";
 
 export default function RegisterForm() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [dados, setDados] = useState({
+    cpf: "",
+    nome: "",
+    id_item: "",
+    nome_item: "",
+    localizacao: "",
+    status: "",
+  });
 
-  const [showPositionInput, setShowPositionInput] = useState();
+  const baseUrl = "http://127.0.0.1:8000/consulta/v1/cpf_request/";
 
-  const handleCheckbox = (e) => {
-    let isChecked = e.target.checked;
-    return isChecked;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(baseUrl, dados);
   };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit}>
       <FormControl padding="20px" display="flex" flexDir="column" gap="20px">
-        <Flex flexDir="column">
-          <FormLabel htmlFor="name">Nome</FormLabel>
-          <Input
-            id="name"
-            type="text"
-            {...register("name", { required: true })}
-          ></Input>
-        </Flex>
-
-        <Flex flexDir="column">
-          <FormLabel htmlFor="email">Email</FormLabel>
-          <Input
-            id="email"
-            type="email"
-            {...register("email", { required: true })}
-          ></Input>
-        </Flex>
-
         <Flex flexDir="column">
           <FormLabel htmlFor="cpf">CPF</FormLabel>
           <Input
             id="cpf"
             type="text"
-            {...register("cpf", { required: true })}
+            value={dados.cpf}
+            onChange={(e) => setDados({ ...dados, cpf: e.target.value })}
+          ></Input>
+        </Flex>
+
+        <Flex flexDir="column">
+          <FormLabel htmlFor="name">Nome</FormLabel>
+          <Input
+            id="name"
+            type="text"
+            value={dados.nome}
+            onChange={(e) => setDados({ ...dados, nome: e.target.value })}
+          ></Input>
+        </Flex>
+
+        <Flex flexDir="column">
+          <FormLabel htmlFor="id_item">Id do item</FormLabel>
+          <Input
+            id="id_item"
+            type="number"
+            value={dados.id_item}
+            onChange={(e) =>
+              setDados({ ...dados, id_item: parseInt(e.target.value) })
+            }
           ></Input>
         </Flex>
 
@@ -60,31 +68,30 @@ export default function RegisterForm() {
           <Input
             id="name_item"
             type="text"
-            {...register("name_item", { required: true })}
+            value={dados.nome_item}
+            onChange={(e) => setDados({ ...dados, nome_item: e.target.value })}
+          ></Input>
+        </Flex>
+
+        <Flex flexDir="column">
+          <FormLabel htmlFor="position">Localização</FormLabel>
+          <Input
+            id="position"
+            value={dados.localizacao}
+            onChange={(e) =>
+              setDados({ ...dados, localizacao: e.target.value })
+            }
+            type="text"
           ></Input>
         </Flex>
 
         <Flex flexDir="column">
           <FormLabel htmlFor="status">Status</FormLabel>
-          <Checkbox
-            {...register("status")}
+          <Input
+            value={dados.status}
+            onChange={(e) => setDados({ ...dados, status: e.target.value })}
             id="status"
-            type="checkbox"
-            onChange={(e) => {
-              if (handleCheckbox(e)) {
-                setShowPositionInput(true);
-              } else {
-                setShowPositionInput(false);
-              }
-            }}
-          >
-            Item Encontrado
-          </Checkbox>
-        </Flex>
-
-        <Flex flexDir="column" display={showPositionInput ? "flex" : "none"}>
-          <FormLabel htmlFor="position">Localização</FormLabel>
-          <Input id="position" type="text" {...register("position")}></Input>
+          ></Input>
         </Flex>
 
         <ButtonSubmit />

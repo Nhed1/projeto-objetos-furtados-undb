@@ -34,7 +34,6 @@ export default function RegisterUser() {
     <Flex h="100vh" w="90vw">
       <Sidebar setActiveNav={setActiveNav} />
       <Flex
-        h="100%"
         ml="100px"
         w="100%"
         mt="50px"

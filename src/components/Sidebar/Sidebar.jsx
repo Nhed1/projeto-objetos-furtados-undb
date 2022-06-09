@@ -5,7 +5,10 @@ import { FiMenu } from "react-icons/fi";
 import { GoPlusSmall } from "react-icons/go";
 import { AiFillDelete } from "react-icons/ai";
 import { MdBallot } from "react-icons/md";
+import { BiArrowBack } from "react-icons/bi";
 import NavItem from "./NavItem";
+
+import { Link } from "react-router-dom";
 
 export default function Sidebar({ setActiveNav }) {
   const [navSize, changeNavSize] = useState("large");
@@ -58,6 +61,20 @@ export default function Sidebar({ setActiveNav }) {
           setActiveNav={setActiveNav}
           activeNav="all"
         />
+      </Flex>
+      <Flex
+        alignItems={navSize == "small" ? "center" : "flex-start"}
+        flexDirection="column"
+        p="5%"
+      >
+        <Link to="/">
+          <IconButton
+            background="none"
+            mt={5}
+            _hover={{ background: "none" }}
+            icon={<BiArrowBack />}
+          />
+        </Link>
       </Flex>
     </Flex>
   );

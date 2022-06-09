@@ -6,7 +6,7 @@ export default function ButtonSubmit() {
       colorScheme="teal"
       width="400px"
       alignSelf="center"
-      mt="60px"
+      mt="20px"
     >
       Enviar
     </Button>
